@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Katelyn Chan</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts: EB Garamond -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+
+    <!-- Your own CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --accent: #FB8D75;
+            --accent-dark: #BE5845;
+            --accent-light: #FFC4AA;
+            --card-bg: #FFFEF7;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background-color: #F2E8C9;
+            background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+            color: #2b2b2b;
+        }
+
+        .page-card {
+            position: relative;
+            overflow: visible;
+            max-width: 800px;
+            margin: 48px auto;
+            background-color: var(--card-bg);
+            padding: 40px 50px;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .corner-decoration {
+            position: absolute;
+            top: -60px;
+            right: -90px;
+            width: 230px;
+            height: auto;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .top-nav {
+            text-align: right;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            margin-right: 140px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .top-nav a {
+            color: #2b2b2b;
+            text-decoration: none;
+            margin-left: 16px;
+        }
+
+        .top-nav a:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 3rem;
+            margin-bottom: 6px;
+        }
+
+        .dotted-divider {
+            border: none;
+            border-top: 3px dotted var(--accent);
+            margin: 8px 0 24px 0;
+        }
+
+        h2 {
+            font-weight: 800;
+            margin-top: 36px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--accent-light);
+        }
+
+        .card img,
+        .framed-img {
+            border: 6px solid var(--accent);
+            border-radius: 2px;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .btn-accent:hover {
+            background-color: var(--accent-dark);
+            border-color: var(--accent-dark);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-card">
+
+        <img src="images/corner-decoration.png" alt="" class="corner-decoration">
+
+        <div class="top-nav">
+            <a href="index.html">home</a>
+            <a href="about.html">about me</a>
+            <a href="golf.html">golf</a>
+            <!-- <a href="https://github.com/katelyn102" target="_blank" rel="noopener">github</a> -->
+        </div>
+
+        <h1>Katelyn Chan</h1>
+        <hr class="dotted-divider">
+
+        <p>Welcome to my little corner of the web. Here you'll find projects I've been working hard on as well as all of my latest hyperfixations.</p>
+
+        <h2 id="projects">Latest Projects</h2>
+        <div class="row g-4 mt-1">
+            <!-- University Archives Treemap -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Cal Poly University Archives</h5>
+                        <p class="card-text">Behind the scenes, campus records throughout Cal Poly's history are being preserved in the University Archives. This repository holds records from the founding of Cal Poly in 1901 to the present. This interactive treemap built in Python's Plot.ly library displays how much space on a bookshelf each collection takes up in linear ft.</p>
+                        <a href="treemap.html" target="_blank" class="btn btn-accent">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Duplicate this col-md-6 block for each project -->
+
+            <!-- Flourish survey embed -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Latine Special Collection at Cal Poly's Kennedy Library</h5>
+                        <p class="card-text">An interactive visualization about the background of each book in the Latine Special Collection built in Flourish.</p>
+                        <div class="flourish-embed flourish-survey" data-src="visualisation/28033150">
+                            <script src="https://public.flourish.studio/resources/embed.js"></script>
+                            <noscript><img src="https://public.flourish.studio/visualisation/28033150/thumbnail" width="100%" alt="survey visualization" /></noscript>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
