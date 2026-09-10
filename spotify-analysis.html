@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Spotify Streaming Analysis - Katelyn Chan</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts: EB Garamond -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+
+    <!-- Your own CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --accent: #FB8D75;
+            --accent-dark: #BE5845;
+            --accent-light: #FFC4AA;
+            --card-bg: #FFFEF7;
+            --line-navy: #4A5A6A;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background-color: #F2E8C9;
+            background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+            color: #2b2b2b;
+        }
+
+        .page-card {
+            position: relative;
+            overflow: visible;
+            max-width: 800px;
+            margin: 48px auto;
+            background-color: var(--card-bg);
+            padding: 40px 50px;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .top-nav {
+            text-align: right;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .top-nav a {
+            color: #2b2b2b;
+            text-decoration: none;
+            margin-left: 16px;
+        }
+
+        .top-nav a:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 3rem;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: #6b6455;
+            margin-bottom: 0;
+        }
+
+        .meta-line {
+            font-size: 0.95rem;
+            color: #8a8168;
+            margin-top: 4px;
+        }
+
+        .dotted-divider {
+            border: none;
+            border-top: 3px dotted var(--accent);
+            margin: 8px 0 24px 0;
+        }
+
+        h2 {
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-top: 12px;
+        }
+
+        .section {
+            margin-top: 50px;
+            padding-top: 36px;
+            border-top: 1px dashed var(--accent-light);
+        }
+
+        .section:first-of-type {
+            margin-top: 30px;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Stat row */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 24px 0 8px 0;
+        }
+
+        .stat-box {
+            border: 1px solid var(--accent-light);
+            border-radius: 2px;
+            padding: 16px 12px;
+            text-align: center;
+            background-color: #FFFCF0;
+        }
+
+        .stat-number {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--accent-dark);
+            display: block;
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6b6455;
+        }
+
+        /* Chart container */
+        .chart-frame {
+            border: 6px solid var(--accent);
+            border-radius: 2px;
+            background-color: #FFFEF7;
+            padding: 20px 16px 10px 16px;
+            margin: 24px 0;
+        }
+
+        .chart-caption {
+            font-size: 0.9rem;
+            color: #6b6455;
+            text-align: center;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* Method list */
+        .method-steps {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        .method-steps li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .method-steps li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+
+        .finding-quote {
+            border-left: 4px solid var(--accent);
+            padding: 4px 20px;
+            margin: 24px 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #4a4536;
+        }
+
+        .tag-row {
+            margin-top: 10px;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: var(--accent-dark);
+            border: 1px solid var(--accent-light);
+            border-radius: 20px;
+            padding: 3px 12px;
+            margin: 0 6px 6px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-card">
+
+        <div class="top-nav">
+            <a href="index.html">home</a>
+            <a href="about.html">about me</a>
+            <a href="golf.html">golf</a>
+        </div>
+
+        <h1>A Year of a User's Spotify Data</h1>
+        <p class="subtitle">Using PySpark to find patterns in 49,000+ streams</p>
+        <p class="meta-line">Project on Distributed Computing</p>
+        <hr class="dotted-divider">
+
+        <div class="tag-row">
+            <span class="tag-pill">PySpark</span>
+            <span class="tag-pill">Distributed Computing</span>
+            <span class="tag-pill">Window Functions</span>
+            <span class="tag-pill">Parititioning</span>
+            <span class="tag-pill">Spotify API</span>
+            <span class="tag-pill">Data Pipelines</span>
+        </div>
+
+        <!-- ============================= -->
+        <!-- OVERVIEW                       -->
+        <!-- ============================= -->
+        <div class="section">
+            <p>I downloaded a full year of a friend's Spotify streaming history and used it to ask a few questions: what do I actually listen to, when do I skip songs, and when do their longest listening streaks happen? The dataset was too large and messy to explore by hand, so the project became as much about building a clean data pipeline as it was about the music.</p>
+
+            <div class="stat-row">
+                <div class="stat-box">
+                    <span class="stat-number">49,272</span>
+                    <span class="stat-label">streams analyzed</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">66</span>
+                    <span class="stat-label">days of listening</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">1 yr</span>
+                    <span class="stat-label">Nov 2024 &ndash; Nov 2025</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================= -->
+        <!-- METHOD                         -->
+        <!-- ============================= -->
+        <div class="section">
+            <h2>How it was built</h2>
+            <p>The raw export from Spotify was five JSON files with no artist metadata beyond a name and URI, which is not enough to analyze the listening data properly. The pipeline I built added context to the data before the analysis began:</p>
+
+            <ul class="method-steps">
+                <li>Loaded the raw JSON into Spark and filtered out podcasts/audiobooks, keeping only music streams.</li>
+                <li>Queried the Spotify API for each artist and track to pull in genre, popularity, and follower data, then broadcast-joined it back onto the streaming data to avoid expensive shuffles.</li>
+                <li>Cached the enriched dataset so repeated queries across three research questions didn't recompute the joins each time.</li>
+                <li>Built listening "sessions" and per-artist "streaks" using window functions, which is sorted by each timestamp. This measures the gap between consecutive tracks, and starting a new streak whenever the artist changed or more than a minute of silence passed.</li>
+            </ul>
+        </div>
+
+        <!-- ============================= -->
+        <!-- CHART 1: Monthly trend         -->
+        <!-- ============================= -->
+        <div class="section">
+            <h2>Listening rose and fell with the semester</h2>
+            <p>Monthly listening hours, with a 3-month moving average layered on top to smooth out noise.</p>
+
+            <div class="chart-frame">
+                <img src="images/monthly-listening-chart.png" alt="Monthly listening patterns with 3-month moving average" style="width:100%; height:auto; display:block;">
+            </div>
+            <p class="chart-caption">Hours listened per month, Nov 2024&ndash;Nov 2025.</p>
+
+            <p>The August spike lines up with the start of school. The low points fall during the summer months, where less studying and academic work is being done. During midterm and finals periods, listening patterns increase again. From a retrospective lens, this type of pattern is obvious, but it is invisible until it is plotted.</p>
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- CHART 3: Streaks by hour       -->
+        <!-- ============================= -->
+        <div class="section">
+            <h2>When the longest streaks happen</h2>
+            <p>For each top artist, I found their longest continuous same-artist "streaks" (30+ minutes of uninterrupted listening) and plotted how many of those streaks started at each hour of the day.</p>
+
+            <div class="chart-frame">
+                <img src="images/streak-hours-chart.png" alt="Hourly distribution of long streaks for top artists (2025)" style="width:100%; height:auto; display:block;">
+            </div>
+            <p class="chart-caption">Number of 30+ minute streaks starting at each hour, by artist.</p>
+
+            <p>Tate McRae streaks spike hardest around noon and again in the early evening &mdash; a peak of 9 streaks starting at 12pm alone &mdash; while most other artists never produce more than a single long streak in any given hour. That's the difference between an artist I stream in the background and one I actually sit with.</p>
+        </div>
+
+        <!-- ============================= -->
+        <!-- FINDING CALLOUT                -->
+        <!-- ============================= -->
+        <div class="section">
+            <h2>A result that surprised me</h2>
+            <p>Before running the numbers, I assumed longer listening sessions would mean fewer skips &mdash; more time settled in, less impatience. The data said otherwise.</p>
+
+            <div class="finding-quote">
+                Session length and skip rate had almost no linear relationship (correlation coefficient of &minus;0.02). How long I listen has nothing to do with how often I skip.
+            </div>
+
+            <p>I also found that the longest same-artist "streaks" (30+ minutes of continuous listening) cluster around very specific hours of the day depending on the artist &mdash; one artist consistently shows up in midday and evening streaks, while others only ever appear in short, scattered bursts.</p>
+        </div>
+
+        <!-- ============================= -->
+        <!-- WRAP UP                        -->
+        <!-- ============================= -->
+        <div class="section">
+            <h2>Takeaways</h2>
+            <p>The most interesting part of this project was that a personal, informal dataset like streaming history holds real structure once it's cleaned, partitioned, joined, and windowed properly. Building the session/streak logic with Spark window functions ended up being more valuable practice than any of the individual findings.</p>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

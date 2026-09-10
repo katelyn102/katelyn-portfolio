@@ -104,6 +104,8 @@
         }
 
         .interest-photo {
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
             width: 100%;
             height: auto;
             aspect-ratio: 16 / 10;
@@ -143,6 +145,12 @@
         .collage-grid .interest-photo-placeholder {
             aspect-ratio: unset;
             height: 100%;
+            border: none;
+        }
+
+        .collage-grid .caption-wrap {
+            border: 6px solid var(--accent);
+            border-radius: 2px;
         }
 
         .collage-item-1 { grid-column: 1 / 3; grid-row: 1 / 3; }
@@ -185,6 +193,10 @@
             transform: translateY(0);
         }
 
+        .caption-wrap:hover .interest-photo {
+            filter: grayscale(0%);
+        }
+
         .golf-paragraphs {
             margin-top: 36px;
         }
@@ -222,7 +234,7 @@
 <div class="collage-grid">
     <div class="collage-item-1 caption-wrap">
         <img src="images/pose.jpg" class="interest-photo">
-        <div class="caption">Pictured at Bay View Golf Club in Milpitas, CA</div>
+        <div class="caption">Pictured at Bay View Golf Club in Milpitas, CA:</div>
     </div>
 
     <div class="collage-item-2 caption-wrap">
@@ -232,12 +244,12 @@
 
     <div class="collage-item-3 caption-wrap">
         <img src="images/kc_sf.jpg" class="interest-photo">
-        <div class="caption">8 year old me practicing chipping.</div>
+        <div class="caption">8 year old me practicing:</div>
     </div>
 
     <div class="collage-item-4 caption-wrap">
         <img src="images/kids.jpg" class="interest-photo">
-        <div class="caption">My junior golfers!</div>
+        <div class="caption">My junior golfers:</div>
     </div>
 </div>
         <!-- ============================= -->

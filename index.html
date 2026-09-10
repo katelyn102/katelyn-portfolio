@@ -112,6 +112,16 @@
             border-color: var(--accent-dark);
             color: #fff;
         }
+
+        .tag-pill {
+            display: inline-block;
+            font-size: 0.78rem;
+            color: var(--accent-dark);
+            border: 1px solid var(--accent-light);
+            border-radius: 20px;
+            padding: 2px 10px;
+            margin: 0 6px 6px 0;
+        }
     </style>
 </head>
 <body>
@@ -130,16 +140,41 @@
         <h1>Katelyn Chan</h1>
         <hr class="dotted-divider">
 
-        <p>Welcome to my little corner of the web. Here you'll find projects I've been working hard on as well as all of my latest hyperfixations.</p>
+        <p>Welcome to my little corner of the web. Here you'll find projects I've been working hard on as well as all of my favorite hobbies.</p>
 
         <h2 id="projects">Latest Projects</h2>
         <div class="row g-4 mt-1">
+
+            <!-- Spotify streaming analysis: spans full width (2 columns) -->
+            <div class="col-md-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">A Year of a User's Spotify Data</h5>
+                        <p class="card-text">Cleaning and enriching 49,000+ personal Spotify streams with PySpark, then using window functions to uncover listening patterns, skip habits, and same-artist listening streaks.</p>
+                        <div class="mb-3">
+                            <span class="tag-pill">PySpark</span>
+                            <span class="tag-pill">Distributed Computing</span>
+                            <span class="tag-pill">Window Functions</span>
+                            <span class="tag-pill">Parititioning</span>
+                            <span class="tag-pill">Spotify API</span>
+                            <span class="tag-pill">Data Pipelines</span>
+                        </div>
+                        <a href="spotify-analysis.html" class="btn btn-accent">View Project</a>
+                    </div>
+                </div>
+            </div>
+
             <!-- University Archives Treemap -->
             <div class="col-md-6">
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">Cal Poly University Archives</h5>
                         <p class="card-text">Behind the scenes, campus records throughout Cal Poly's history are being preserved in the University Archives. This repository holds records from the founding of Cal Poly in 1901 to the present. This interactive treemap built in Python's Plot.ly library displays how much space on a bookshelf each collection takes up in linear ft.</p>
+                        <div class="mb-3">
+                            <span class="tag-pill">Plot.ly</span>
+                            <span class="tag-pill">Data Cleaning</span>
+                            <span class="tag-pill">Multidisciplinary Teamwork</span>
+                        </div>
                         <a href="treemap.html" target="_blank" class="btn btn-accent">View Project</a>
                     </div>
                 </div>
