@@ -9,12 +9,11 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Google Fonts: EB Garamond -->
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
 
-    <!-- Your own CSS -->
     <link rel="stylesheet" href="css/style.css">
 
     <style>
@@ -25,8 +24,13 @@
             --card-bg: #FFFEF7;
         }
 
+        html,
         body {
-            font-family: 'EB Garamond', serif;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: "EB Garamond", serif;
             background-color: #F2E8C9;
             background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
             color: #2b2b2b;
@@ -34,11 +38,11 @@
 
         .page-card {
             position: relative;
-            overflow: visible;
             max-width: 800px;
             margin: 48px auto;
-            background-color: var(--card-bg);
             padding: 40px 50px;
+            overflow: visible;
+            background-color: var(--card-bg);
             border-radius: 4px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         }
@@ -47,25 +51,25 @@
             position: absolute;
             top: -60px;
             right: -90px;
+            z-index: 2;
             width: 230px;
             height: auto;
-            z-index: 2;
             pointer-events: none;
         }
 
         .top-nav {
-            text-align: right;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            margin-right: 140px;
             position: relative;
             z-index: 1;
+            margin-right: 140px;
+            margin-bottom: 10px;
+            text-align: right;
+            font-size: 0.9rem;
         }
 
         .top-nav a {
+            margin-left: 16px;
             color: #2b2b2b;
             text-decoration: none;
-            margin-left: 16px;
         }
 
         .top-nav a:hover {
@@ -74,18 +78,19 @@
         }
 
         h1 {
-            font-weight: 800;
-            font-size: 3rem;
             margin-bottom: 6px;
+            font-size: 3rem;
+            font-weight: 800;
         }
 
         .dotted-divider {
+            margin: 8px 0 24px;
             border: none;
             border-top: 3px dotted var(--accent);
-            margin: 8px 0 24px 0;
         }
 
         .about-photo {
+            display: block;
             width: 100%;
             height: auto;
             border: 6px solid var(--accent);
@@ -96,37 +101,102 @@
             font-size: 1.15rem;
             line-height: 1.6;
         }
+
+        .email-link {
+            color: var(--accent-dark);
+            overflow-wrap: anywhere;
+        }
+
+        .email-link:hover {
+            color: var(--accent-dark);
+        }
+
+        /* Mobile styles */
+        @media (max-width: 767.98px) {
+            .page-card {
+                margin: 20px 12px;
+                padding: 28px 22px;
+            }
+
+            .corner-decoration {
+                top: -28px;
+                right: -38px;
+                width: 120px;
+                opacity: 0.8;
+            }
+
+            .top-nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px 16px;
+                margin-right: 0;
+                margin-bottom: 22px;
+                text-align: left;
+            }
+
+            .top-nav a {
+                margin-left: 0;
+                padding: 4px 0;
+                font-size: 1rem;
+            }
+
+            h1 {
+                font-size: 2.35rem;
+                line-height: 1;
+            }
+
+            .about-text {
+                font-size: 1.08rem;
+                line-height: 1.5;
+            }
+
+            .about-text p {
+                margin-bottom: 1rem;
+            }
+        }
     </style>
 </head>
+
 <body>
-
-    <div class="page-card">
-
+    <main class="page-card">
         <img src="images/corner-decoration.png" alt="" class="corner-decoration">
 
-        <div class="top-nav">
+        <nav class="top-nav" aria-label="Main navigation">
             <a href="index.html">home</a>
             <a href="about.html">about me</a>
             <a href="golf.html">golf</a>
-            <!-- <a href="https://github.com/katelyn102" target="_blank" rel="noopener">github</a> -->
-        </div>
+        </nav>
 
         <h1>About Me</h1>
         <hr class="dotted-divider">
 
         <div class="row align-items-center g-4">
-            <div class="col-md-5">
-                <img src="images/kmc_milan.JPEG" alt="Katelyn in Milan" class="about-photo">
+            <!-- col-12 ensures the image fills the phone width above the text. -->
+            <div class="col-12 col-md-5">
+                <img
+                    src="images/kmc_milan.JPEG"
+                    alt="Katelyn in Milan"
+                    class="about-photo"
+                >
             </div>
-            <div class="col-md-7 about-text">
-                <p>Hello, I'm Katelyn! I come from a background of Statistics, Computer Science, and Industrial Technology. In this blog, I aim to share my latest projects as well as some of the interests I have.</p>
-                <p>Contact Info: katelynchan24@gmail.com</p>
+
+            <div class="col-12 col-md-7 about-text">
+                <p>
+                    Hello, I'm Katelyn! I come from a background in Statistics,
+                    Computer Science, and Industrial Technology. In this blog, I
+                    share my latest projects along with some of my interests.
+                </p>
+
+                <p>
+                    Contact:
+                    <a class="email-link" href="mailto:katelynchan24@gmail.com">
+                        katelynchan24@gmail.com
+                    </a>
+                </p>
             </div>
         </div>
+    </main>
 
-    </div>
-
-    <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
