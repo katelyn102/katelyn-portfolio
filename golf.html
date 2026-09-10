@@ -9,12 +9,11 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Google Fonts: EB Garamond -->
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
 
-    <!-- Your own CSS -->
     <link rel="stylesheet" href="css/style.css">
 
     <style>
@@ -25,8 +24,13 @@
             --card-bg: #FFFEF7;
         }
 
+        html,
         body {
-            font-family: 'EB Garamond', serif;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: "EB Garamond", serif;
             background-color: #F2E8C9;
             background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
             color: #2b2b2b;
@@ -34,11 +38,11 @@
 
         .page-card {
             position: relative;
-            overflow: visible;
             max-width: 800px;
             margin: 48px auto;
-            background-color: var(--card-bg);
             padding: 40px 50px;
+            overflow: visible;
+            background-color: var(--card-bg);
             border-radius: 4px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         }
@@ -47,25 +51,25 @@
             position: absolute;
             top: -60px;
             right: -90px;
-            width: 280px;
-            height: auto;
             z-index: 2;
+            width: 230px;
+            height: auto;
             pointer-events: none;
         }
 
         .top-nav {
-            text-align: right;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            margin-right: 140px;
             position: relative;
             z-index: 1;
+            margin-right: 140px;
+            margin-bottom: 10px;
+            text-align: right;
+            font-size: 0.9rem;
         }
 
         .top-nav a {
+            margin-left: 16px;
             color: #2b2b2b;
             text-decoration: none;
-            margin-left: 16px;
         }
 
         .top-nav a:hover {
@@ -74,23 +78,22 @@
         }
 
         h1 {
-            font-weight: 800;
-            font-size: 3rem;
             margin-bottom: 6px;
-        }
-
-        .dotted-divider {
-            border: none;
-            border-top: 3px dotted var(--accent);
-            margin: 8px 0 24px 0;
+            font-size: 3rem;
+            font-weight: 800;
         }
 
         h2 {
-            font-weight: 800;
             margin-top: 12px;
+            font-weight: 800;
         }
 
-        /* Interest section blocks */
+        .dotted-divider {
+            margin: 8px 0 24px;
+            border: none;
+            border-top: 3px dotted var(--accent);
+        }
+
         .interest-section {
             margin-top: 60px;
             padding-top: 40px;
@@ -104,33 +107,30 @@
         }
 
         .interest-photo {
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
+            display: block;
             width: 100%;
             height: auto;
             aspect-ratio: 16 / 10;
             object-fit: cover;
+            background-color: #eee;
             border: 6px solid var(--accent);
             border-radius: 2px;
-            background-color: #eee;
-        }
-
-        video.interest-photo {
-            display: block;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
         }
 
         .interest-photo-placeholder {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            border: 6px dashed var(--accent-light);
-            border-radius: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 100%;
+            padding: 20px;
+            aspect-ratio: 16 / 10;
             color: #b0a48a;
             font-size: 0.95rem;
             text-align: center;
-            padding: 20px;
+            border: 6px dashed var(--accent-light);
+            border-radius: 2px;
         }
 
         .collage-grid {
@@ -143,8 +143,8 @@
 
         .collage-grid .interest-photo,
         .collage-grid .interest-photo-placeholder {
-            aspect-ratio: unset;
             height: 100%;
+            aspect-ratio: unset;
             border: none;
         }
 
@@ -153,39 +153,52 @@
             border-radius: 2px;
         }
 
-        .collage-item-1 { grid-column: 1 / 3; grid-row: 1 / 3; }
-        .collage-item-2 { grid-column: 3 / 5; grid-row: 1 / 2; }
-        .collage-item-3 { grid-column: 3 / 4; grid-row: 2 / 3; }
-        .collage-item-4 { grid-column: 4 / 5; grid-row: 2 / 3; }
+        .collage-item-1 {
+            grid-column: 1 / 3;
+            grid-row: 1 / 3;
+        }
 
-        /* Hover-caption behavior */
+        .collage-item-2 {
+            grid-column: 3 / 5;
+            grid-row: 1 / 2;
+        }
+
+        .collage-item-3 {
+            grid-column: 3 / 4;
+            grid-row: 2 / 3;
+        }
+
+        .collage-item-4 {
+            grid-column: 4 / 5;
+            grid-row: 2 / 3;
+        }
+
         .caption-wrap {
             position: relative;
-            overflow: hidden;
             height: 100%;
+            overflow: hidden;
             border-radius: 2px;
         }
 
         .caption-wrap .interest-photo {
-            display: block;
             width: 100%;
             height: 100%;
         }
 
         .caption-wrap .caption {
             position: absolute;
+            right: 0;
             bottom: 0;
             left: 0;
-            right: 0;
-            background: rgba(43, 43, 43, 0.75);
-            color: #fff;
-            font-family: 'EB Garamond', serif;
-            font-size: 0.9rem;
             padding: 8px 12px;
+            color: #fff;
+            font-family: "EB Garamond", serif;
+            font-size: 0.9rem;
+            background: rgba(43, 43, 43, 0.75);
             opacity: 0;
+            pointer-events: none;
             transform: translateY(100%);
             transition: opacity 0.25s ease, transform 0.25s ease;
-            pointer-events: none;
         }
 
         .caption-wrap:hover .caption {
@@ -202,72 +215,191 @@
         }
 
         .golf-paragraphs p {
+            margin-bottom: 20px;
             font-size: 1.1rem;
             line-height: 1.6;
-            margin-bottom: 20px;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 767.98px) {
+            .page-card {
+                margin: 20px 12px;
+                padding: 28px 22px;
+            }
+
+            .corner-decoration {
+                top: -28px;
+                right: -38px;
+                width: 120px;
+                opacity: 0.8;
+            }
+
+            .top-nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px 16px;
+                margin-right: 0;
+                margin-bottom: 22px;
+                text-align: left;
+            }
+
+            .top-nav a {
+                margin-left: 0;
+                padding: 4px 0;
+                font-size: 1rem;
+            }
+
+            h1 {
+                font-size: 2.35rem;
+                line-height: 1;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+
+            .collage-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: 260px 150px 150px;
+                gap: 8px;
+                margin-top: 20px;
+            }
+
+            .collage-item-1 {
+                grid-column: 1 / 3;
+                grid-row: 1 / 2;
+            }
+
+            .collage-item-2 {
+                grid-column: 1 / 3;
+                grid-row: 2 / 3;
+            }
+
+            .collage-item-3 {
+                grid-column: 1 / 2;
+                grid-row: 3 / 4;
+            }
+
+            .collage-item-4 {
+                grid-column: 2 / 3;
+                grid-row: 3 / 4;
+            }
+
+            /* Captions remain visible on touchscreen devices. */
+            .caption-wrap .caption {
+                padding: 6px 9px;
+                font-size: 0.85rem;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .caption-wrap .interest-photo {
+                filter: grayscale(0%);
+            }
+
+            .golf-paragraphs {
+                margin-top: 28px;
+            }
+
+            .golf-paragraphs p {
+                margin-bottom: 18px;
+                font-size: 1.05rem;
+                line-height: 1.5;
+            }
         }
     </style>
 </head>
+
 <body>
-
-    <div class="page-card">
-
+    <main class="page-card">
         <img src="images/corner-decoration.png" alt="" class="corner-decoration">
 
-        <div class="top-nav">
+        <nav class="top-nav" aria-label="Main navigation">
             <a href="index.html">home</a>
             <a href="about.html">about me</a>
             <a href="golf.html">golf</a>
-            <!-- <a href="https://github.com/" target="_blank" rel="noopener">github</a> -->
-        </div>
+        </nav>
 
         <h1>Golf</h1>
         <hr class="dotted-divider">
 
         <p>A few highlights from the course.</p>
 
-        <!-- ============================= -->
-        <!-- PHOTO COLLAGE                  -->
-        <!-- Hover over each item to see    -->
-        <!-- its caption.                   -->
-        <!-- ============================= -->
-<div class="collage-grid">
-    <div class="collage-item-1 caption-wrap">
-        <img src="images/pose.jpg" class="interest-photo">
-        <div class="caption">Pictured at Bay View Golf Club in Milpitas, CA:</div>
-    </div>
+        <div class="collage-grid">
+            <div class="collage-item-1 caption-wrap">
+                <img
+                    src="images/pose.jpg"
+                    class="interest-photo"
+                    alt="Katelyn at Bay View Golf Club in Milpitas, California"
+                >
+                <div class="caption">
+                    Pictured at Bay View Golf Club in Milpitas, CA:
+                </div>
+            </div>
 
-    <div class="collage-item-2 caption-wrap">
-        <img src="images/swing.gif" class="interest-photo">
-        <div class="caption">My swing:</div>
-    </div>
+            <div class="collage-item-2 caption-wrap">
+                <img
+                    src="images/swing.gif"
+                    class="interest-photo"
+                    alt="Katelyn taking a golf swing"
+                >
+                <div class="caption">Teeing off at hole 14 at Coyote Creek Golf Club in Morgan Hill, CA:</div>
+            </div>
 
-    <div class="collage-item-3 caption-wrap">
-        <img src="images/kc_sf.jpg" class="interest-photo">
-        <div class="caption">8 year old me practicing:</div>
-    </div>
+            <div class="collage-item-3 caption-wrap">
+                <img
+                    src="images/kc_sf.jpg"
+                    class="interest-photo"
+                    alt="Katelyn practicing golf as a child"
+                >
+                <div class="caption">8 year-old me practicing:</div>
+            </div>
 
-    <div class="collage-item-4 caption-wrap">
-        <img src="images/kids.jpg" class="interest-photo">
-        <div class="caption">My junior golfers:</div>
-    </div>
-</div>
-        <!-- ============================= -->
-        <!-- Two paragraph placeholders     -->
-        <!-- ============================= -->
-
-        <div class="golf-paragraphs">
-            <p>I started playing golf when I was 4 and played competively up until the end of high school. Now, golf is definitely more of a hobby and I've grown to appreciate it in a new light. It's no longer a something to stress over, golf is just another area in life I get to better myself and refine. 
-                Secretly, it also allows me to shift my attention away from reality for a short while. New challenges arise every time I play on the course, every round is unpredictable. I don't think I'll ever get tired of it. At least I hope that day never comes.
-                I also spent 12 years as a participant in the First Tee program. It's a nonprofit organization that teaches kids life skills-but it happens to be on the course. There are levels participants progress through like boy/girl scouts and I completed the Ace Certification in high school. 
-                When I'm home for summers, I am junior golf instructor with the First Tee. Teaching golf is another avenue of the game that I really enjoy. Guiding kids to accomplish their goals is an amazing feeling and spending time with them is always a blast. </p>
-           
-                <p>Fun fact: I've made two hole in ones!</p>
+            <div class="collage-item-4 caption-wrap">
+                <img
+                    src="images/kids.jpg"
+                    class="interest-photo"
+                    alt="Junior golfers Katelyn teaches"
+                >
+                <div class="caption">My junior golfers:</div>
+            </div>
         </div>
 
-    </div>
+        <section class="golf-paragraphs">
+            <p>
+                I started playing golf when I was four and played competitively
+                through the end of high school. Now, golf is more of a hobby, and
+                I have grown to appreciate it in a new light. It is no longer
+                something to stress over; it is an area of life where I can
+                continue to improve and refine my skills.
+            </p>
 
-    <!-- Bootstrap JavaScript -->
+            <p>
+                Secretly, it also lets me shift my attention away from reality
+                for a little while. New challenges arise every time I play, and
+                every round is unpredictable. I do not think I will ever get
+                tired of it—at least, I hope that day never comes.
+            </p>
+
+            <p>
+                I also spent 12 years as a participant in the First Tee program,
+                a nonprofit organization that teaches children life skills through
+                golf. Participants progress through different levels, similar to
+                scouting programs, and I completed the Ace Certification in high
+                school.
+            </p>
+
+            <p>
+                When I am home for the summer, I work as a junior golf instructor
+                with First Tee. Teaching is another part of the game that I enjoy:
+                guiding kids toward their goals is incredibly rewarding, and I
+                always have a blast spending time with them.
+            </p>
+
+            <p><strong>Fun fact:</strong> I have made two hole-in-ones!</p>
+        </section>
+    </main>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
