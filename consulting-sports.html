@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Statistics Consulting - Katelyn Chan</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts: EB Garamond -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+
+    <!-- Your own CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --accent: #FB8D75;
+            --accent-dark: #BE5845;
+            --accent-light: #FFC4AA;
+            --card-bg: #FFFEF7;
+            --line-navy: #4A5A6A;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background-color: #F2E8C9;
+            background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+            color: #2b2b2b;
+        }
+
+        .page-card {
+            position: relative;
+            overflow: visible;
+            max-width: 800px;
+            margin: 48px auto;
+            background-color: var(--card-bg);
+            padding: 40px 50px;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .corner-decoration {
+            position: absolute;
+            top: -60px;
+            right: -90px;
+            width: 230px;
+            height: auto;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .top-nav {
+            position: relative;
+            z-index: 1;
+            margin-right: 140px;
+            margin-bottom: 10px;
+            text-align: right;
+            font-size: 0.9rem;
+        }
+
+        .top-nav a {
+            margin-left: 16px;
+            color: #2b2b2b;
+            text-decoration: none;
+        }
+
+        .top-nav a:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 3rem;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: #6b6455;
+            margin-bottom: 0;
+        }
+
+        .meta-line {
+            font-size: 0.95rem;
+            color: #8a8168;
+            margin-top: 4px;
+        }
+
+        .dotted-divider {
+            border: none;
+            border-top: 3px dotted var(--accent);
+            margin: 8px 0 24px 0;
+        }
+
+        h2 {
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-top: 12px;
+        }
+
+        .section {
+            margin-top: 50px;
+            padding-top: 36px;
+            border-top: 1px dashed var(--accent-light);
+        }
+
+        .section:first-of-type {
+            margin-top: 30px;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Stat row */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 24px 0 8px 0;
+        }
+
+        .stat-box {
+            border: 1px solid var(--accent-light);
+            border-radius: 2px;
+            padding: 16px 12px;
+            text-align: center;
+            background-color: #FFFCF0;
+        }
+
+        .stat-number {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--accent-dark);
+            display: block;
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6b6455;
+        }
+
+        /* Chart container */
+        .chart-frame {
+            border: 6px solid var(--accent);
+            border-radius: 2px;
+            background-color: #FFFEF7;
+            padding: 20px 16px 10px 16px;
+            margin: 24px 0;
+        }
+
+        .chart-caption {
+            font-size: 0.9rem;
+            color: #6b6455;
+            text-align: center;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* Side-by-side charts */
+        .chart-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            align-items: start;
+            margin: 24px 0;
+        }
+
+        .chart-pair > div {
+            min-width: 0; /* lets columns shrink instead of stretching to image size */
+        }
+
+        .chart-pair .chart-frame {
+            margin: 0 0 6px 0;
+            padding: 10px 8px 4px;
+            border-width: 4px;
+        }
+
+        .chart-pair img {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1; /* adjust to match your images, e.g. 4 / 3 */
+            object-fit: cover;
+            object-position: scale-down;;
+        }
+
+        /* Method list */
+        .method-steps {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        .method-steps li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .method-steps li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+
+        .finding-quote {
+            border-left: 4px solid var(--accent);
+            padding: 4px 20px;
+            margin: 24px 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #4a4536;
+        }
+
+        .tag-row {
+            margin-top: 10px;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: var(--accent-dark);
+            border: 1px solid var(--accent-light);
+            border-radius: 20px;
+            padding: 3px 12px;
+            margin: 0 6px 6px 0;
+        }
+
+        /* Variable definitions */
+        .var-group-title {
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--accent-dark);
+            margin: 28px 0 10px 0;
+        }
+
+        .var-list {
+            margin: 0;
+            padding: 0;
+        }
+
+        .var-item {
+            border: 1px solid var(--accent-light);
+            border-left: 4px solid var(--accent);
+            border-radius: 2px;
+            background-color: #FFFCF0;
+            padding: 10px 16px;
+            margin-bottom: 10px;
+        }
+
+        .var-item dt {
+            font-weight: 800;
+            font-size: 1.05rem;
+            margin: 0;
+        }
+
+        .var-item dd {
+            margin: 2px 0 0 0;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #4a4536;
+        }
+
+        /* Mobile layout */
+        @media (max-width: 767.98px) {
+            html,
+            body {
+                overflow-x: hidden;
+            }
+
+            .page-card {
+                margin: 20px 12px;
+                padding: 28px 22px;
+            }
+
+            .corner-decoration {
+                top: -28px;
+                right: -38px;
+                width: 120px;
+                opacity: 0.8;
+            }
+
+            .top-nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px 16px;
+                margin-right: 0;
+                margin-bottom: 22px;
+                text-align: left;
+            }
+
+            .top-nav a {
+                margin-left: 0;
+                padding: 4px 0;
+                font-size: 1rem;
+            }
+
+            .top-nav a:hover {
+                color: var(--accent-dark);
+                text-decoration: underline;
+            }
+
+            h1 {
+                font-size: 2.1rem;
+                line-height: 1.05;
+            }
+
+            h2 {
+                font-size: 1.35rem;
+                line-height: 1.15;
+            }
+
+            .subtitle,
+            .meta-line {
+                font-size: 1rem;
+            }
+
+            .section {
+                margin-top: 34px;
+                padding-top: 28px;
+            }
+
+            .section p {
+                font-size: 1.05rem;
+                line-height: 1.5;
+            }
+
+            .stat-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .stat-box {
+                padding: 12px;
+            }
+
+            .stat-number {
+                font-size: 1.55rem;
+            }
+
+            .chart-frame {
+                margin: 20px 0;
+                padding: 10px 8px 6px;
+                border-width: 4px;
+            }
+
+            .chart-caption {
+                font-size: 0.85rem;
+            }
+
+            .chart-pair {
+                grid-template-columns: 1fr;
+            }
+
+            .method-steps li {
+                padding-left: 22px;
+                margin-bottom: 12px;
+                font-size: 1rem;
+                line-height: 1.45;
+            }
+
+            .method-steps li::before {
+                top: 8px;
+                width: 7px;
+                height: 7px;
+            }
+
+            .finding-quote {
+                margin: 20px 0;
+                padding: 4px 14px;
+                font-size: 1.05rem;
+            }
+
+            .tag-pill {
+                padding: 3px 9px;
+                font-size: 0.78rem;
+            }
+
+            .var-item {
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="page-card">
+        <img src="images/corner-decoration.png" alt="" class="corner-decoration">
+
+        <nav class="top-nav" aria-label="Main navigation">
+            <a href="index.html">home</a>
+            <a href="about.html">about me</a>
+            <a href="golf.html">golf</a>
+        </nav>
+
+        <h1 style="font-size: 38px;">Statistical Consulting: <br> Sports Analytics vs. Psychology</h1>
+        <p class="subtitle"> <br> Using R to find patterns in Psychosocial Factors and Softball Performance Metrics</p>
+
+        <hr class="dotted-divider">
+
+        <div class="tag-row">
+            <span class="tag-pill">MANOVA</span>
+            <span class="tag-pill">Correlation</span>
+            <span class="tag-pill">Multivariate Linear Regression</span>
+            <span class="tag-pill">Predictive Analysis</span>
+            <span class="tag-pill">Data Visualizations</span>
+        </div>
+
+        <!-- ============================= -->
+        <!-- OVERVIEW                       -->
+        <!-- ============================= -->
+        <div class="section">
+            <h3 style="font-size: 20px;">Research Question: “Do psychosocial factors have an association with gait, balance, and softball performance metrics for softball players ages 7-15 in the California Central Coast?”</h3>
+            <p>
+                The goal of this study was to allow for more equal investment in research regarding softball, compared to the attention and investment received by baseball. Specifically, the client was
+                interested in correlations or results when conducting analysis on how psychosocial factors affected metrics in balance, gait, and softball performance.
+            </p>
+        </div>
+
+        <!-- ============================= -->
+        <!-- VARIABLES                      -->
+        <!-- ============================= -->
+        <div class="section">
+            <h2>Variables</h2>
+            <p>The analysis uses three kinds of measures: gait metrics, balance metrics, and psychosocial survey scores.</p>
+
+            <h3 class="var-group-title">Gait Metrics</h3>
+            <dl class="var-list">
+                <div class="var-item">
+                    <dt>Gait Speed</dt>
+                    <dd>Speed at which the participant walked, measured in m/s.</dd>
+                </div>
+                <div class="var-item">
+                    <dt>Stride Length</dt>
+                    <dd>Length of the strides participants walked with, measured in m.</dd>
+                </div>
+                <div class="var-item">
+                    <dt>Double Support</dt>
+                    <dd>Percentage of the gait cycle during which participants are on two feet.</dd>
+                </div>
+            </dl>
+
+            <h3 class="var-group-title">Balance Metrics</h3>
+            <dl class="var-list">
+                <div class="var-item">
+                    <dt>Double Leg (DL) Stance</dt>
+                    <dd>Average 3D RMS acceleration score for two trials when standing in the double leg stance (standing with 2 feet).</dd>
+                </div>
+                <div class="var-item">
+                    <dt>Single Leg (SL) Stance</dt>
+                    <dd>Average 3D RMS acceleration score for two trials when standing in the single leg stance (standing on 1 foot).</dd>
+                </div>
+                <div class="var-item">
+                    <dt>Tandem Stance (TS)</dt>
+                    <dd>Average 3D RMS acceleration score for two trials when standing in the tandem stance (standing with one foot in front of the other).</dd>
+                </div>
+            </dl>
+
+            <h3 class="var-group-title">Psychosocial Factors</h3>
+            <dl class="var-list">
+                <div class="var-item">
+                    <dt>Confidence and Perception</dt>
+                    <dd>Average Likert score of questions 1&ndash;3 on the survey.</dd>
+                </div>
+                <div class="var-item">
+                    <dt>Perceived Opportunity and Inclusion</dt>
+                    <dd>Average Likert score of questions 4&ndash;6 on the survey.</dd>
+                </div>
+                <div class="var-item">
+                    <dt>Motivation and Enjoyment/Perceived Benefit</dt>
+                    <dd>Average Likert score of questions 7&ndash;9 on the survey.</dd>
+                </div>
+                <div class="var-item">
+                    <dt>External Social Environment</dt>
+                    <dd>Average Likert score of questions 10&ndash;13 on the survey.</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- ============================= -->
+        <!-- METHOD                         -->
+        <!-- ============================= -->
+        <div class="section">
+            <h2>MANOVA</h2>
+            <p>I took the gait metric as a joint response of the 3 individual metrics, gait speed (m/s), normalized
+                stride length (m), and double support (% gait cycle). Similarly I did this for the balance metrics.
+                Then I tested whether or not a psychosocial factor has an effect on the gait/balance metric using a
+                MANOVA.</p>
+
+            <div class="chart-pair">
+                <div>
+                    <div class="chart-frame">
+                        <img src="images/corr_matrix.jpg" alt="Correlations Among Balance Metrics">
+                    </div>
+                    <p class="chart-caption">Correlations Among Balance Metrics.</p>
+                </div>
+
+                <div>
+                    <div class="chart-frame">
+                        <img src="images/corr_matrix2.png" alt="Correlations Among Gait Metrics">
+                    </div>
+                    <p class="chart-caption">Correlations Among Gait Metrics.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Multiple Linear Regression</h2>
+            <p>Further it was important to consider the possibility of the individual gait metrics being
+                related with one another, and the individual balance metrics being related with one another. For
+                example, if a higher gait speed is related to a higher normalized stride length it has a
+                positive correlation. If it were vice-versa, we would say they have a negative correlation, and
+                if there were no relation, then we say zero correlation.</p>
+        </div>
+
+        <!-- ============================= -->
+        <!-- CHART 1: Monthly trend         -->
+        <!-- ============================= -->
+        <div class="section">
+            <h2>Listening rose and fell with the semester</h2>
+            <p>Monthly listening hours, with a 3-month moving average layered on top to smooth out noise.</p>
+
+            <div class="chart-frame">
+                <img src="images/monthly-listening-chart.png" alt="Monthly listening patterns with 3-month moving average" style="width:100%; height:auto; display:block;">
+            </div>
+            <p class="chart-caption">Hours listened per month, Nov 2024&ndash;Nov 2025.</p>
+
+            <p>The August spike lines up with the start of school. The low points fall during the summer months, where less studying and academic work is being done. During midterm and finals periods, listening patterns increase again. From a retrospective lens, this type of pattern is obvious, but it is invisible until it is plotted.</p>
+        </div>
+
+        <!-- ============================= -->
+        <!-- CHART 3: Streaks by hour       -->
+        <!-- ============================= -->
+        <div class="section">
+            <h2>When the longest streaks happen</h2>
+            <p>For each top artist, I found their longest continuous same-artist "streaks" (30+ minutes of uninterrupted listening) and plotted how many of those streaks started at each hour of the day.</p>
+
+            <div class="chart-frame">
+                <img src="images/streak-hours-chart.png" alt="Hourly distribution of long streaks for top artists (2025)" style="width:100%; height:auto; display:block;">
+            </div>
+            <p class="chart-caption">Number of 30+ minute streaks starting at each hour, by artist.</p>
+
+            <p>Tate McRae streaks spike hardest around noon and again in the early evening &mdash; a peak of 9 streaks starting at 12pm alone &mdash; while most other artists never produce more than a single long streak in any given hour. This shows the difference between an artist they stream in the background vs one they actually sit with.</p>
+        </div>
+
+        <!-- ============================= -->
+        <!-- FINDING CALLOUT                -->
+        <!-- ============================= -->
+        <div class="section">
+            <h2>A result that surprised me</h2>
+            <p>Before running the numbers, I assumed longer listening sessions would mean fewer skips &mdash; more time settled in, less impatience. However, the data said otherwise.</p>
+
+            <div class="finding-quote">
+                Session length and skip rate had almost no linear relationship (correlation coefficient of &minus;0.02). How long I listen has nothing to do with how often I skip.
+            </div>
+
+            <p>I also found that the longest same-artist "streaks" (30+ minutes of continuous listening) cluster around very specific hours of the day depending on the artist &mdash; one artist consistently shows up in midday and evening streaks, while others only ever appear in short, scattered bursts.</p>
+        </div>
+
+        <!-- ============================= -->
+        <!-- WRAP UP                        -->
+        <!-- ============================= -->
+        <div class="section">
+            <h2>Takeaways</h2>
+            <p>The most interesting part of this project was that a personal, informal dataset like streaming history holds real structure once it's cleaned, partitioned, joined, and windowed properly. Building the session/streak logic with Spark window functions ended up being more valuable practice than any of the individual findings.</p>
+        </div>
+
+    </main>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
