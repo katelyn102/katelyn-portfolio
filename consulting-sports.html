@@ -531,58 +531,7 @@
                 positive correlation. If it were vice-versa, we would say they have a negative correlation, and
                 if there were no relation, then we say zero correlation.</p>
         </div>
-
-        <!-- ============================= -->
-        <!-- CHART 1: Monthly trend         -->
-        <!-- ============================= -->
-        <div class="section">
-            <h2>Listening rose and fell with the semester</h2>
-            <p>Monthly listening hours, with a 3-month moving average layered on top to smooth out noise.</p>
-
-            <div class="chart-frame">
-                <img src="images/monthly-listening-chart.png" alt="Monthly listening patterns with 3-month moving average" style="width:100%; height:auto; display:block;">
-            </div>
-            <p class="chart-caption">Hours listened per month, Nov 2024&ndash;Nov 2025.</p>
-
-            <p>The August spike lines up with the start of school. The low points fall during the summer months, where less studying and academic work is being done. During midterm and finals periods, listening patterns increase again. From a retrospective lens, this type of pattern is obvious, but it is invisible until it is plotted.</p>
-        </div>
-
-        <!-- ============================= -->
-        <!-- CHART 3: Streaks by hour       -->
-        <!-- ============================= -->
-        <div class="section">
-            <h2>When the longest streaks happen</h2>
-            <p>For each top artist, I found their longest continuous same-artist "streaks" (30+ minutes of uninterrupted listening) and plotted how many of those streaks started at each hour of the day.</p>
-
-            <div class="chart-frame">
-                <img src="images/streak-hours-chart.png" alt="Hourly distribution of long streaks for top artists (2025)" style="width:100%; height:auto; display:block;">
-            </div>
-            <p class="chart-caption">Number of 30+ minute streaks starting at each hour, by artist.</p>
-
-            <p>Tate McRae streaks spike hardest around noon and again in the early evening &mdash; a peak of 9 streaks starting at 12pm alone &mdash; while most other artists never produce more than a single long streak in any given hour. This shows the difference between an artist they stream in the background vs one they actually sit with.</p>
-        </div>
-
-        <!-- ============================= -->
-        <!-- FINDING CALLOUT                -->
-        <!-- ============================= -->
-        <div class="section">
-            <h2>A result that surprised me</h2>
-            <p>Before running the numbers, I assumed longer listening sessions would mean fewer skips &mdash; more time settled in, less impatience. However, the data said otherwise.</p>
-
-            <div class="finding-quote">
-                Session length and skip rate had almost no linear relationship (correlation coefficient of &minus;0.02). How long I listen has nothing to do with how often I skip.
-            </div>
-
-            <p>I also found that the longest same-artist "streaks" (30+ minutes of continuous listening) cluster around very specific hours of the day depending on the artist &mdash; one artist consistently shows up in midday and evening streaks, while others only ever appear in short, scattered bursts.</p>
-        </div>
-
-        <!-- ============================= -->
-        <!-- WRAP UP                        -->
-        <!-- ============================= -->
-        <div class="section">
-            <h2>Takeaways</h2>
-            <p>The most interesting part of this project was that a personal, informal dataset like streaming history holds real structure once it's cleaned, partitioned, joined, and windowed properly. Building the session/streak logic with Spark window functions ended up being more valuable practice than any of the individual findings.</p>
-        </div>
+ 
 
     </main>
 
